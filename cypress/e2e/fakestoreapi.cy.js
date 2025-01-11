@@ -15,7 +15,7 @@ describe('Lista de produtos Fake Store', () => {
     cy.getProducts().then((response) => {
       expect(response.status).to.equal(200);
       const prodEletronics = productsActions.getProductsByCategory(response.body, "electronics");
-      expect(prodEletronics.length).to.be.greaterThan(4);
+      expect(prodEletronics.length).to.be.greaterThan(6);
       cy.log("List of products electronic:")
       cy.log(prodEletronics)
     })
