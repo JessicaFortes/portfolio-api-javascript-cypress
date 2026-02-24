@@ -14,8 +14,10 @@
 // ***********************************************************
 
 // Import commands.js using ES2015 syntax:
-import './request/apiFakeStoreProductsCommands.js';
+import './request/productsCommands'
+import './request/usersCommands'
+import './request/cartsCommands'
+import './request/authCommands'
 
 // Alternatively you can use CommonJS syntax:
 // require('./commands')
-

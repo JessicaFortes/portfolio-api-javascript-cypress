@@ -1,20 +1,18 @@
 import Joi from 'joi'
 
-const productSchema = Joi.array().items(
-  Joi.object({
-    id: Joi.number(),
-    category: Joi.string(),
-    description: Joi.string(),
-    image: Joi.string(),
-    price: Joi.number(),
-    title: Joi.string(),
-    rating: Joi.object({
-      count: Joi.number(),
-      rate: Joi.number(),
-    })
-  })
-)
+export const productItemSchema = Joi.object({
+  id: Joi.number().required(),
+  category: Joi.string().required(),
+  description: Joi.string().required(),
+  image: Joi.string().uri().required(),
+  price: Joi.number().required(),
+  title: Joi.string().required(),
+  rating: Joi.object({
+    count: Joi.number().required(),
+    rate: Joi.number().required(),
+  }).required()
+}).required().unknown(false)
 
+export const productListSchema = Joi.array().items(productItemSchema).required()
 
-
-export default productSchema
+export default productListSchema

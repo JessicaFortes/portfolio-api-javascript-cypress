@@ -1,0 +1,45 @@
+{
+  "products": {
+    "category": "electronics",
+    "validProductId": 1,
+    "nonExistentProductId": 999999,
+    "invalidProductIdFormat": "abc",
+    "limit": 5,
+    "sort": "desc",
+    "minElectronicProducts": 1,
+    "minElectronicProductsWithRateAbove4": 1
+  },
+  "users": {
+    "validUserId": 1,
+    "nonExistentUserId": 999999,
+    "invalidUserIdFormat": "abc",
+    "lastCreatedUser": {
+      "id": 11
+    },
+    "lastCreatedAt": "2026-02-24T01:21:12.313Z",
+    "lastCreatedCredentials": {
+      "username": "job_user_1771896071282",
+      "password": "job_password_123",
+      "email": "teste-580@qa.com.br"
+    }
+  },
+  "carts": {
+    "validUserId": 1,
+    "nonExistentUserId": 999999,
+    "invalidUserIdFormat": "abc"
+  },
+  "auth": {
+    "validCredentials": {
+      "username": "mor_2314",
+      "password": "83r5^_"
+    },
+    "dynamicCredentials": {
+      "username": "job_user_1771896071282",
+      "password": "job_password_123"
+    },
+    "invalidCredentials": {
+      "username": "invalid_user",
+      "password": "invalid_password"
+    }
+  }
+}

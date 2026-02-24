@@ -1,30 +1,49 @@
-# Technical automation test
+# API Testing Portfolio with Cypress
 
-Create an automated API test using any JS framework or library
+Portfolio project focused on API test automation practices using Fake Store API.
 
-### Challenge:
+## Covered endpoints
+- `GET /products`
+- `GET /products/:id`
+- `GET /products/categories`
+- `GET /products?limit=<n>`
+- `GET /products?sort=desc`
+- `GET /users/:id`
+- `GET /carts/user/:id`
+- `POST /auth/login`
 
-1) Call https://fakestoreapi.com/products
-2) Read the response, find all objects with property “electronics”
-3) Compare the response if the objects have the select property
-4) Count the number of times that the property above appears
-5) Verify the number of objects with the property above appears with rate bigger than 4
-6) Finally print found objects to console
+## Test strategy
+- Contract validation with Joi schemas
+- Positive and negative scenarios per domain
+- Test data centralized in fixtures
+- Domain-based organization for specs, requests and contracts
 
-### Framework:
- - Cypress 13.14.1
+## Reporting
+- Mochawesome HTML report generated automatically after test execution
+- CI publishes the HTML report as a workflow artifact
 
-### Languages:
- - Javascript
- - Joi
+## Stack
+- Cypress
+- JavaScript
+- Joi
+- Mochawesome
 
-## Installation:
-After downloading the project from GitHub, open the terminal and run the command below
-> npm install
+## Install
+```bash
+npm install
+```
 
-## Execution:
-To run the project via terminal looking at the production environment settings, run the command below
-> npm run test-prod
+## Run tests
+```bash
+npm run test
+```
 
-To run the project by opening cypress looking at the production environment settings run the command below
-> npm run test-open-prod
+Run with production config:
+```bash
+npm run test-prod
+```
+
+Open Cypress UI:
+```bash
+npm run test-open-prod
+```

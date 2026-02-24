@@ -1,0 +1,220 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 7,
+    "passes": 7,
+    "pending": 0,
+    "failures": 0,
+    "start": "2026-02-24T01:21:28.461Z",
+    "end": "2026-02-24T01:21:30.961Z",
+    "duration": 2500,
+    "testsRegistered": 7,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "38ac7b6b-02bb-4eb5-8271-8fe7a15b419e",
+      "title": "",
+      "fullFile": "cypress\\e2e\\products.cy.js",
+      "file": "cypress\\e2e\\products.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "d417f04f-1b15-4e8c-9ca0-6e906a3a9e62",
+          "title": "Fake Store API - Products",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "[GET /products] Validate products endpoint contract",
+              "fullTitle": "Fake Store API - Products [GET /products] Validate products endpoint contract",
+              "timedOut": null,
+              "duration": 376,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.getProducts().then(response => {\n  var _error$details;\n  expect(response.status).to.equal(200);\n  const {\n    error\n  } = _productsContract.default.validate(response.body, {\n    abortEarly: false\n  });\n  expect(error, error === null || error === void 0 || (_error$details = error.details) === null || _error$details === void 0 ? void 0 : _error$details.map(detail => detail.message).join(' | ')).to.be.undefined;\n  cy.log('List of products:');\n  cy.log(response.body);\n});",
+              "err": {},
+              "uuid": "b781dfa1-0540-47e0-908f-de6dd99c3d58",
+              "parentUUID": "d417f04f-1b15-4e8c-9ca0-6e906a3a9e62",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "[GET /products] Get list of electronic products",
+              "fullTitle": "Fake Store API - Products [GET /products] Get list of electronic products",
+              "timedOut": null,
+              "duration": 478,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.getProducts().then(response => {\n  expect(response.status).to.equal(200);\n  const electronicProducts = _productsActions.default.getProductsByCategory(response.body, _testData.default.products.category);\n  expect(electronicProducts.length).to.be.at.least(_testData.default.products.minElectronicProducts);\n  electronicProducts.forEach(product => {\n    expect(product).to.have.property('rating');\n    expect(product.rating).to.have.property('rate');\n    expect(product.rating.rate).to.be.a('number');\n  });\n  cy.log('List of electronic products:');\n  cy.log(electronicProducts);\n});",
+              "err": {},
+              "uuid": "e8af4d2a-eca9-4763-8573-d5d78d151bee",
+              "parentUUID": "d417f04f-1b15-4e8c-9ca0-6e906a3a9e62",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "[GET /products] Validate quantity of electronic products with rating.rate > 4",
+              "fullTitle": "Fake Store API - Products [GET /products] Validate quantity of electronic products with rating.rate > 4",
+              "timedOut": null,
+              "duration": 276,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.getProducts().then(response => {\n  expect(response.status).to.equal(200);\n  const countProduct = response.body.filter(product => product.category === 'electronics' && product.rating && typeof product.rating.rate === 'number' && product.rating.rate > 4).length;\n  expect(countProduct).to.be.at.least(_testData.default.products.minElectronicProductsWithRateAbove4);\n});",
+              "err": {},
+              "uuid": "8df63ee5-60f0-4dc6-a95a-fd7e82129c57",
+              "parentUUID": "d417f04f-1b15-4e8c-9ca0-6e906a3a9e62",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "[GET /products/:id] Validate a single product contract",
+              "fullTitle": "Fake Store API - Products [GET /products/:id] Validate a single product contract",
+              "timedOut": null,
+              "duration": 265,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.getProductById(_testData.default.products.validProductId).then(response => {\n  var _error$details2;\n  expect(response.status).to.equal(200);\n  const {\n    error\n  } = _productsContract.productItemSchema.validate(response.body, {\n    abortEarly: false\n  });\n  expect(error, error === null || error === void 0 || (_error$details2 = error.details) === null || _error$details2 === void 0 ? void 0 : _error$details2.map(detail => detail.message).join(' | ')).to.be.undefined;\n  expect(response.body.id).to.equal(_testData.default.products.validProductId);\n});",
+              "err": {},
+              "uuid": "9467110b-3c2c-44ec-b143-4e9a92397308",
+              "parentUUID": "d417f04f-1b15-4e8c-9ca0-6e906a3a9e62",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "[GET /products/categories] Validate available categories",
+              "fullTitle": "Fake Store API - Products [GET /products/categories] Validate available categories",
+              "timedOut": null,
+              "duration": 288,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.getProductCategories().then(response => {\n  expect(response.status).to.equal(200);\n  expect(response.body).to.be.an('array').and.not.to.be.empty;\n  expect(response.body).to.include(_testData.default.products.category);\n});",
+              "err": {},
+              "uuid": "d81268fa-e064-4fef-bb6d-42d8e5f209de",
+              "parentUUID": "d417f04f-1b15-4e8c-9ca0-6e906a3a9e62",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "[GET /products?limit=5] Return the requested amount of products",
+              "fullTitle": "Fake Store API - Products [GET /products?limit=5] Return the requested amount of products",
+              "timedOut": null,
+              "duration": 333,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.getProductsWithQuery({\n  limit: _testData.default.products.limit\n}).then(response => {\n  expect(response.status).to.equal(200);\n  expect(response.body).to.be.an('array').and.to.have.length(_testData.default.products.limit);\n});",
+              "err": {},
+              "uuid": "f2f76790-a9ab-4ddc-b6be-87ec4885cff7",
+              "parentUUID": "d417f04f-1b15-4e8c-9ca0-6e906a3a9e62",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "[GET /products?sort=desc] Return products sorted by id in descending order",
+              "fullTitle": "Fake Store API - Products [GET /products?sort=desc] Return products sorted by id in descending order",
+              "timedOut": null,
+              "duration": 278,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.getProductsWithQuery({\n  sort: _testData.default.products.sort\n}).then(response => {\n  expect(response.status).to.equal(200);\n  expect(response.body).to.be.an('array').and.not.to.be.empty;\n  const ids = response.body.map(product => product.id);\n  const sortedDesc = [...ids].sort((a, b) => b - a);\n  expect(ids).to.deep.equal(sortedDesc);\n});",
+              "err": {},
+              "uuid": "4731b538-3711-47a3-bb14-e22331d7b188",
+              "parentUUID": "d417f04f-1b15-4e8c-9ca0-6e906a3a9e62",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "b781dfa1-0540-47e0-908f-de6dd99c3d58",
+            "e8af4d2a-eca9-4763-8573-d5d78d151bee",
+            "8df63ee5-60f0-4dc6-a95a-fd7e82129c57",
+            "9467110b-3c2c-44ec-b143-4e9a92397308",
+            "d81268fa-e064-4fef-bb6d-42d8e5f209de",
+            "f2f76790-a9ab-4ddc-b6be-87ec4885cff7",
+            "4731b538-3711-47a3-bb14-e22331d7b188"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 2294,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.2.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.4"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/reports",
+        "overwrite": false,
+        "html": false,
+        "json": true,
+        "charts": true
+      },
+      "version": "6.3.2"
+    }
+  }
+}

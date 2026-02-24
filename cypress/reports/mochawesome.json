@@ -1,0 +1,130 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 2,
+    "passes": 1,
+    "pending": 0,
+    "failures": 1,
+    "start": "2026-02-24T01:21:22.270Z",
+    "end": "2026-02-24T01:21:24.122Z",
+    "duration": 1852,
+    "testsRegistered": 2,
+    "passPercent": 50,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "512cf55f-d4a8-4a2c-afaa-74c6cf9bd2c3",
+      "title": "",
+      "fullFile": "cypress\\e2e\\auth.cy.js",
+      "file": "cypress\\e2e\\auth.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "d6a9cf87-ed28-4b5a-bc25-a4f10f3994da",
+          "title": "Fake Store API - Auth",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "[POST /auth/login] Return token for valid credentials",
+              "fullTitle": "Fake Store API - Auth [POST /auth/login] Return token for valid credentials",
+              "timedOut": null,
+              "duration": 1313,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "cy.login(_testData.default.auth.validCredentials).then(response => {\n  var _error$details;\n  expect(response.status).to.equal(200);\n  const {\n    error\n  } = _authContract.loginSuccessSchema.validate(response.body, {\n    abortEarly: false\n  });\n  expect(error, error === null || error === void 0 || (_error$details = error.details) === null || _error$details === void 0 ? void 0 : _error$details.map(detail => detail.message).join(' | ')).to.be.undefined;\n});",
+              "err": {
+                "message": "AssertionError: expected 201 to equal 200",
+                "estack": "AssertionError: expected 201 to equal 200\n    at Context.eval (webpack:///../e2e/auth.cy.js:7:33)\n    at getRet (https://fakestoreapi.com/__cypress/runner/cypress_runner.js:122807:20)\n    at tryCatcher (https://fakestoreapi.com/__cypress/runner/cypress_runner.js:1777:23)\n    at Promise.attempt.Promise.try (https://fakestoreapi.com/__cypress/runner/cypress_runner.js:4285:29)\n    at Context.thenFn (https://fakestoreapi.com/__cypress/runner/cypress_runner.js:122818:66)\n    at Context.then (https://fakestoreapi.com/__cypress/runner/cypress_runner.js:123069:21)",
+                "diff": "- 201\n+ 200\n"
+              },
+              "uuid": "0bd36c14-682d-4dbe-9ee8-23c081f0252b",
+              "parentUUID": "d6a9cf87-ed28-4b5a-bc25-a4f10f3994da",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "[POST /auth/login] Reject invalid credentials (negative)",
+              "fullTitle": "Fake Store API - Auth [POST /auth/login] Reject invalid credentials (negative)",
+              "timedOut": null,
+              "duration": 472,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.login(_testData.default.auth.invalidCredentials, {\n  failOnStatusCode: false\n}).then(response => {\n  expect(response.status).to.be.oneOf([400, 401]);\n});",
+              "err": {},
+              "uuid": "490ef99b-5b8f-4ad8-9e36-1b7c6d311f27",
+              "parentUUID": "d6a9cf87-ed28-4b5a-bc25-a4f10f3994da",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "490ef99b-5b8f-4ad8-9e36-1b7c6d311f27"
+          ],
+          "failures": [
+            "0bd36c14-682d-4dbe-9ee8-23c081f0252b"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 1785,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.2.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.4"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/reports",
+        "overwrite": false,
+        "html": false,
+        "json": true,
+        "charts": true
+      },
+      "version": "6.3.2"
+    }
+  }
+}

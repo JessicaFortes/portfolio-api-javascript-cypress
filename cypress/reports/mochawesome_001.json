@@ -1,0 +1,125 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 2,
+    "passes": 2,
+    "pending": 0,
+    "failures": 0,
+    "start": "2026-02-24T01:21:25.723Z",
+    "end": "2026-02-24T01:21:26.570Z",
+    "duration": 847,
+    "testsRegistered": 2,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "b51f7c20-9df6-4f93-af95-1cbd9b551052",
+      "title": "",
+      "fullFile": "cypress\\e2e\\carts.cy.js",
+      "file": "cypress\\e2e\\carts.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "dcd13caa-05a2-4f8a-9e52-351630c3cf14",
+          "title": "Fake Store API - Carts",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "[GET /carts/user/:id] Validate carts payload for a user",
+              "fullTitle": "Fake Store API - Carts [GET /carts/user/:id] Validate carts payload for a user",
+              "timedOut": null,
+              "duration": 447,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.getCartsByUserId(_testData.default.carts.validUserId).then(response => {\n  expect(response.status).to.equal(200);\n  expect(response.body).to.be.an('array');\n  response.body.forEach(cart => {\n    expect(cart).to.have.property('id');\n    expect(cart).to.have.property('userId', _testData.default.carts.validUserId);\n    expect(cart).to.have.property('date');\n    expect(cart).to.have.property('products');\n    expect(cart.products).to.be.an('array');\n  });\n});",
+              "err": {},
+              "uuid": "9508c6be-a72f-46fa-9ddb-85618d957bd6",
+              "parentUUID": "dcd13caa-05a2-4f8a-9e52-351630c3cf14",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "[GET /carts/user/:id] Return 400 for invalid user id format (negative)",
+              "fullTitle": "Fake Store API - Carts [GET /carts/user/:id] Return 400 for invalid user id format (negative)",
+              "timedOut": null,
+              "duration": 350,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.getCartsByUserId(_testData.default.carts.invalidUserIdFormat, {\n  failOnStatusCode: false\n}).then(response => {\n  expect(response.status).to.equal(400);\n});",
+              "err": {},
+              "uuid": "a03caa77-64e0-42d9-b401-7fe386be2039",
+              "parentUUID": "dcd13caa-05a2-4f8a-9e52-351630c3cf14",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "9508c6be-a72f-46fa-9ddb-85618d957bd6",
+            "a03caa77-64e0-42d9-b401-7fe386be2039"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 797,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.2.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.4"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/reports",
+        "overwrite": false,
+        "html": false,
+        "json": true,
+        "charts": true
+      },
+      "version": "6.3.2"
+    }
+  }
+}

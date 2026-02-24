@@ -1,25 +1,35 @@
 {
-  "name": "desafiotec-brilliantmachine",
+  "name": "api-testing-portfolio-cypress",
   "version": "1.0.0",
-  "description": "Projeto de automação de teste para vaga de QA da Brilliant Machine",
+  "description": "API testing portfolio built with Cypress and Joi",
   "main": "index.js",
   "scripts": {
-    "test-prod": "npx cypress run --config-file cypress/config/fakestoreProd.js",
+    "test-prod": "node scripts/runCypressWithReport.js --config-file cypress/config/fakestoreProd.js",
+    "pretest-open-prod": "npm run job:add-user",
     "test-open-prod": "npx cypress open --config-file cypress/config/fakestoreProd.js",
-    "test": "npx cypress run"
+    "test": "node scripts/runCypressWithReport.js",
+    "test:report": "npm run test-prod",
+    "report:clean": "node -e \"require('fs').rmSync('cypress/reports',{recursive:true,force:true})\"",
+    "report:generate": "node scripts/generateReport.js",
+    "job:add-user": "node scripts/addUserAndUpdateFixture.js"
   },
   "keywords": [
-    "testApi",
-    "desafiotec",
-    "brilliantMachine",
-    "testeUi"
+    "api-testing",
+    "cypress",
+    "qa-automation",
+    "portfolio"
   ],
   "author": "Jessica F. Magalhaes",
   "license": "ISC",
-  "devDependencies": {
-    "cypress": "^13.14.1"
+  "overrides": {
+    "minimatch": "^10.2.2",
+    "diff": "^8.0.3"
   },
-  "dependencies": {
-    "joi": "^17.13.3"
+  "devDependencies": {
+    "cypress": "^15.10.0",
+    "joi": "^17.13.3",
+    "mochawesome": "^7.1.3",
+    "mochawesome-merge": "^5.0.0",
+    "mochawesome-report-generator": "^6.3.0"
   }
 }
